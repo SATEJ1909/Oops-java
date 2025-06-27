@@ -1,0 +1,53 @@
+Encapsulation is an Object-Oriented Programming (OOP) principle where data (variables) and code (methods) that operate on the data are bundled together into a single unit, usually a class.
+
+📌 Core Concept:
+Encapsulation helps to:
+
+Hide internal details of how an object works.
+
+Protect data from unauthorized access.
+
+Control modifications to the fields of a class via methods.
+
+🔐 How to Achieve Encapsulation in Java:
+Declare class variables as private (restrict direct access).
+
+Provide public getter and setter methods to access and update the variables.
+
+🧠 Why Encapsulation is Important (Benefits):
+Benefit	Description
+Data Hiding	Prevents external classes from directly accessing sensitive fields.
+Security	Validations can be added in setters to prevent invalid data.
+Flexibility	Internal implementation can be changed without affecting other classes.
+Reusability	Encapsulated code is modular and can be reused.
+Ease of Maintenance	Changes are localized within the class.
+
+🧪 Real-Life Example Analogy:
+Think of a capsule (medicine) — it wraps ingredients inside and gives controlled access. Similarly, a class wraps data and provides access via methods.
+
+🧾 Interview Tips – Possible Questions on Encapsulation:
+What is encapsulation?
+
+It's the process of wrapping data and methods together and restricting direct access to some components of an object.
+
+How does encapsulation differ from abstraction?
+
+Encapsulation is about data hiding (access control).
+
+Abstraction is about hiding implementation details and showing only the functionality.
+
+How is encapsulation implemented in Java?
+
+By making variables private and accessing them using public getter/setter methods.
+
+Can a class be fully encapsulated?
+
+Yes, if all variables are private and only accessible via public methods, it is fully encapsulated.
+
+What are the disadvantages of not using encapsulation?
+
+Lack of control over data.
+
+Higher risk of bugs.
+
+Poor security and maintainability.

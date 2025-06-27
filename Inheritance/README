@@ -1,0 +1,91 @@
+✅ Inheritance in Java – Interview Theory
+🔹 Definition:
+Inheritance is a mechanism in Java by which one class (child/subclass) can acquire the properties and behaviors (fields and methods) of another class (parent/superclass).
+
+It promotes code reusability, supports method overriding, and is one of the key features of Object-Oriented Programming (OOP).
+
+🔹 Syntax:
+java
+Copy
+Edit
+class Parent {
+    // fields and methods
+}
+
+class Child extends Parent {
+    // additional fields and methods
+}
+🔹 Why Use Inheritance?
+Code Reusability: Avoids code duplication by reusing existing logic.
+
+Polymorphism: Enables method overriding for dynamic method dispatch.
+
+Maintainability: Easier to manage shared features and logic.
+
+🔹 Types of Inheritance in Java:
+Type	Description	Example Supported in Java?
+Single Inheritance	One child inherits from one parent.	✅ Yes
+Multilevel Inheritance	Child inherits from a class that is itself a subclass.	✅ Yes
+Hierarchical Inheritance	Multiple classes inherit from the same parent.	✅ Yes
+Multiple Inheritance (via class)	A class inherits from more than one class.	❌ No (ambiguity issue)
+Hybrid Inheritance	Combination of two or more types above.	❌ Not directly supported
+Note: Java supports multiple inheritance using interfaces.		
+
+🔹 Example – Single Inheritance:
+java
+Copy
+Edit
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();  // inherited method
+        d.bark(); // subclass method
+    }
+}
+🔹 Key Concepts in Inheritance:
+Concept	Description
+extends	Keyword to inherit a class
+super	Refers to parent class (used to access methods, variables, constructors)
+method overriding	Redefining the parent method in child class
+Access Modifiers	private members are not inherited. protected and public can be.
+Constructors	Constructors are not inherited, but super() can be used to call them
+
+🔹 Real-World Analogy:
+A Dog is an Animal → Dog inherits general properties of Animal like "eat", "sleep" and has its own property like "bark".
+
+🧠 Common Interview Questions:
+What is inheritance in Java?
+
+Inheritance allows one class to inherit the properties and behavior of another class.
+
+Can constructors be inherited?
+
+No. Constructors are not inherited but can be called using super().
+
+Is multiple inheritance possible in Java?
+
+Not with classes, but possible with interfaces to avoid diamond problem.
+
+What is the difference between super and this?
+
+super refers to parent class, while this refers to the current object.
+
+Why is multiple inheritance not supported with classes?
+
+To avoid ambiguity due to the Diamond Problem.
+
+Can private members be inherited?
+
+No. Private members are not accessible in child classes.
