@@ -1,0 +1,98 @@
+🔹 1. Aggregation – "Has-a" (Weak Association)
+Definition:
+Aggregation is a form of association that represents a "has-a" relationship between two classes, where the child (contained object) can exist independently of the parent.
+
+Key Points:
+
+It is a loose coupling between two classes.
+
+It allows code reusability.
+
+If the container object is destroyed, the contained object can still exist.
+
+Example: A University has-a Professor. Even if the University is closed, Professors can exist.
+
+Code Example:
+
+java
+Copy
+Edit
+class Professor {
+    String name;
+    Professor(String name) { this.name = name; }
+}
+
+class University {
+    String name;
+    Professor professor;  // Aggregation
+
+    University(String name, Professor professor) {
+        this.name = name;
+        this.professor = professor;
+    }
+}
+UML Notation: Open diamond (◊)
+
+🔹 2. Composition – "Has-a" (Strong Association)
+Definition:
+Composition is a stricter form of aggregation where the contained object cannot exist without the container. It implies ownership, meaning one object is completely dependent on the other.
+
+Key Points:
+
+It is a strong coupling between classes.
+
+The lifecycle of the contained object depends on the container.
+
+If the container is destroyed, the contained object is also destroyed.
+
+Example: A House has-a Room. If the House is destroyed, the Room doesn’t exist.
+
+Code Example:
+
+java
+Copy
+Edit
+class Room {
+    String type;
+    Room(String type) { this.type = type; }
+}
+
+class House {
+    private Room room;  // Composition
+
+    House() {
+        this.room = new Room("Bedroom"); // Room created inside House
+    }
+}
+UML Notation: Filled diamond (◆)
+
+🔸 3. Key Differences: Aggregation vs Composition
+Feature	Aggregation	Composition
+Relationship Type	Has-a (weak)	Has-a (strong)
+Dependency	Independent	Dependent
+Object Lifetime	Child object lives independently	Child object dies with parent
+Coupling	Loose	Tight
+UML Symbol	Open Diamond (◊)	Filled Diamond (◆)
+Example	Department has Teachers	House has Rooms
+
+🔸 4. Real-world Analogies
+Scenario	Aggregation	Composition
+Library System	Library has Books (books can exist elsewhere)	Library Catalog Entry (can't exist without a book)
+Car	Car has Driver (driver exists independently)	Car has Engine (engine belongs only to car)
+
+🔸 5. When to Use What?
+Use Aggregation When:	Use Composition When:
+Objects can exist independently	Objects are part of a whole
+You want reusability and flexibility	You want exclusive ownership
+Lifetime of part is not bound to whole	Lifetime of part is bound to whole
+
+🔸 6. Common Interview Questions
+Q: What is the difference between Aggregation and Composition?
+A: Aggregation is a weak association where the part can exist independently of the whole. Composition is a strong association where the part cannot exist without the whole.
+
+Q: Can you give real-world examples of both?
+A: Aggregation → Student and College
+Composition → Heart and Human
+
+Q: Which one promotes more reusability?
+A: Aggregation promotes more reusability as objects are independent.
