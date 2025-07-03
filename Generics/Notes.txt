@@ -1,0 +1,137 @@
+✅ What Are Generics in Java?
+Generics are a feature in Java that allow classes, interfaces, and methods to operate on objects of various types while providing compile-time type safety.
+
+🎯 Why Use Generics?
+Type Safety – Detect type errors at compile time.
+
+Code Reusability – Create a single class/method/interface that works with different data types.
+
+Eliminates Typecasting – No need for explicit casting.
+
+Improved Code Clarity and Maintainability
+
+📚 Syntax Example
+java
+Copy
+Edit
+List<String> list = new ArrayList<>();  // Only accepts Strings
+🧱 Generic Class Example
+java
+Copy
+Edit
+class Box<T> {
+    private T value;
+
+    public void set(T value) { this.value = value; }
+    public T get() { return value; }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Box<Integer> intBox = new Box<>();
+        intBox.set(10);
+        System.out.println(intBox.get());
+    }
+}
+📌 Key Concepts for Interviews
+1. Type Parameter Naming Conventions
+Symbol	Meaning
+T	Type
+E	Element
+K	Key
+V	Value
+N	Number
+
+2. Generic Methods
+java
+Copy
+Edit
+public <T> void printArray(T[] array) {
+    for (T item : array) {
+        System.out.println(item);
+    }
+}
+3. Bounded Type Parameters
+➤ Upper Bound (extends)
+java
+Copy
+Edit
+class Stats<T extends Number> {
+    T num;
+    Stats(T n) { num = n; }
+}
+✅ Accepts only Number or subclasses (Integer, Double, etc.)
+
+➤ Lower Bound (super)
+java
+Copy
+Edit
+public void show(List<? super Integer> list)
+✅ Accepts Integer or its superclasses (e.g., Number, Object)
+
+4. Wildcard (?) Usage
+Wildcard Type	Description	Example
+<?>	Unknown type	List<?>
+<? extends T>	Accepts T or its subclasses	List<? extends Number>
+<? super T>	Accepts T or its superclasses	List<? super Integer>
+
+⚠️ Type Erasure in Generics
+Java uses Type Erasure, meaning generic type info is removed at runtime.
+
+That's why you cannot use primitives and cannot create arrays of generic types.
+
+java
+Copy
+Edit
+// NOT ALLOWED
+// T[] arr = new T[10];
+🚫 Restrictions with Generics
+Cannot use primitives (int, double) directly → Use wrappers (Integer, Double)
+
+Cannot create generic arrays
+
+Cannot instantiate a type parameter: new T() → not allowed
+
+Static members cannot use type parameters
+
+🔥 Most Asked Interview Questions on Generics
+❓ What are generics in Java?
+✅ Generics allow writing flexible, type-safe code that works with different data types.
+
+❓ What is the benefit of using generics?
+✅ Compile-time type checking, no explicit casting, code reusability.
+
+❓ What is type erasure?
+✅ At runtime, all generic type information is removed by the compiler. This is called type erasure.
+
+❓ What is the difference between List<?>, List<? extends T>, and List<? super T>?
+Syntax	Meaning	Usage
+<?>	Any type	Read-only
+<? extends T>	Subtypes of T	Read from list
+<? super T>	Supertypes of T	Write to list
+
+❓ Can you create a generic array in Java?
+❌ No. You cannot directly create an array of a generic type due to type erasure.
+
+❓ Can a generic class have multiple type parameters?
+✅ Yes.
+
+java
+Copy
+Edit
+class Pair<K, V> {
+    K key;
+    V value;
+}
+❓ What is the difference between generic class and generic method?
+Generic class defines type parameters at class level.
+
+Generic method defines type parameters at method level.
+
+📝 Summary Table
+Concept	Explanation
+Generic Class	Class that can operate on objects of various types
+Generic Method	Method with type parameters
+Bounded Types	Limit types using extends or super
+Wildcards	Represent unknown types
+Type Erasure	Removes type info at runtime
