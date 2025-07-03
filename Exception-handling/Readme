@@ -1,0 +1,156 @@
+✅ Core Concepts of Exception Handling in Java
+1. What is an Exception?
+An exception is an unwanted or unexpected event that disrupts the normal flow of a program's execution.
+
+It is an object of a class that extends Throwable.
+
+2. Types of Exceptions
+➤ Checked Exceptions (Compile-time)
+Must be handled using try-catch or declared using throws.
+
+Example: IOException, SQLException.
+
+➤ Unchecked Exceptions (Runtime)
+Occur during program execution and are not checked at compile time.
+
+Example: NullPointerException, ArrayIndexOutOfBoundsException.
+
+➤ Errors
+Serious problems that applications should not try to catch (e.g., OutOfMemoryError).
+
+3. Exception Hierarchy
+php
+Copy
+Edit
+Object
+ └── Throwable
+      ├── Error
+      └── Exception
+           ├── IOException (Checked)
+           └── RuntimeException (Unchecked)
+4. Keywords in Exception Handling
+Keyword	Description
+try	Code that might throw an exception
+catch	Code to handle the exception
+finally	Code that always executes (even if exception is thrown)
+throw	Used to explicitly throw an exception
+throws	Declares exceptions a method might throw
+
+5. Custom Exception
+User-defined exception by extending Exception or RuntimeException.
+
+java
+Copy
+Edit
+class MyException extends Exception {
+    public MyException(String message) {
+        super(message);
+    }
+}
+6. Best Practices
+Catch only what you can handle.
+
+Always clean up with finally or try-with-resources.
+
+Use specific exceptions, not generic Exception.
+
+Avoid empty catch blocks.
+
+Don’t use exceptions for control flow.
+
+🔥 Most Asked Java Exception Handling Interview Questions
+1. ❓ What is the difference between Checked and Unchecked Exceptions?
+✅ Checked - checked at compile-time (e.g., IOException)
+✅ Unchecked - checked at runtime (e.g., ArithmeticException)
+
+2. ❓ Can we have multiple catch blocks?
+✅ Yes. The catch blocks should go from most specific to most general.
+
+java
+Copy
+Edit
+try {
+    // code
+} catch (IOException e) {
+    // specific
+} catch (Exception e) {
+    // general
+}
+3. ❓ What if an exception occurs in finally block?
+✅ It overrides any previously thrown exception.
+
+4. ❓ Can we throw an exception manually?
+✅ Yes, using the throw keyword.
+
+java
+Copy
+Edit
+throw new IllegalArgumentException("Invalid");
+5. ❓ Difference between throw and throws?
+throw	throws
+Used inside method	Used in method signature
+Throws a specific exception	Declares possible exceptions
+One exception	Multiple exceptions
+
+6. ❓ What is try-with-resources?
+✅ Introduced in Java 7. Automatically closes resources like BufferedReader, FileReader, etc.
+
+java
+Copy
+Edit
+try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+    // use br
+}
+7. ❓ What happens if there is a return statement in try/finally?
+✅ If both try and finally have return statements, finally overrides the return from try.
+
+8. ❓ Can finally block be skipped?
+✅ Yes, only in case of:
+
+System.exit()
+
+JVM crash
+
+Infinite loop or fatal error in finally
+
+9. ❓ Can constructors throw exceptions?
+✅ Yes, they can throw both checked and unchecked exceptions.
+
+10. ❓ What is stack trace?
+✅ It's the list of method calls the application was in the middle of when an Exception was thrown.
+
+11. ❓ What is the difference between Exception and Error?
+Exception	Error
+Can be handled	Cannot usually be handled
+Application level	System level (e.g., JVM)
+Example: IOException	Example: OutOfMemoryError
+
+12. ❓ What happens if an exception is not caught?
+✅ It propagates up the call stack until caught or causes the program to terminate.
+
+📌 Custom Exception Example for Interview
+java
+Copy
+Edit
+class AgeTooSmallException extends Exception {
+    public AgeTooSmallException(String msg) {
+        super(msg);
+    }
+}
+
+class Main {
+    public static void main(String[] args) throws AgeTooSmallException {
+        int age = 15;
+        if(age < 18) {
+            throw new AgeTooSmallException("Age must be 18+");
+        }
+    }
+}
+📋 Summary Cheat Sheet
+Concept	Details
+Exception	Anomaly during execution
+Types	Checked / Unchecked
+Keywords	try, catch, finally, throw, throws
+Best Practice	Specific catch, avoid empty blocks, try-with-resources
+Key Classes	Exception, RuntimeException, Throwable
+Interview Focus	try-catch flow, exception propagation, custom exceptions
