@@ -1,0 +1,112 @@
+File Handling in Java is a mechanism to create, read, write, and delete files using Java’s built-in classes from packages like java.io and java.nio.file.
+
+It allows Java applications to store and retrieve data persistently outside the program’s runtime.
+
+📦 Important Packages:
+1. java.io (Classic I/O):
+Used for stream-based file operations.
+
+Provides classes like File, FileReader, FileWriter, BufferedReader, PrintWriter, etc.
+
+2. java.nio.file (NIO – New I/O):
+Introduced in Java 7.
+
+Offers more efficient and flexible file operations using Path, Files, and Paths.
+
+📄 The File Class (java.io)
+Used to represent file and directory pathnames.
+
+Does not read/write file content.
+
+Common methods:
+
+Method	Purpose
+exists()	Checks if file/directory exists
+createNewFile()	Creates a new file
+mkdir()	Creates a new directory
+delete()	Deletes a file
+getName()	Returns file name
+getAbsolutePath()	Full path of file
+length()	Returns size in bytes
+
+🧪 Reading from Files
+Character Stream: Use FileReader, BufferedReader
+
+Byte Stream: Use FileInputStream
+
+Efficient Reading: Use BufferedReader to read large files line-by-line
+
+java
+Copy
+Edit
+BufferedReader br = new BufferedReader(new FileReader("input.txt"));
+String line = br.readLine();
+🖊️ Writing to Files
+Character Stream: Use FileWriter, BufferedWriter, PrintWriter
+
+Byte Stream: Use FileOutputStream
+
+Use append mode with: new FileWriter("file.txt", true)
+
+java
+Copy
+Edit
+FileWriter writer = new FileWriter("output.txt");
+writer.write("Hello Java File Handling!");
+writer.close();
+📥 Streams in File Handling
+Stream Type	Classes	Used For
+Byte Stream	FileInputStream, FileOutputStream	Binary files
+Character Stream	FileReader, FileWriter	Text files
+Buffered Stream	BufferedReader, BufferedWriter	Efficient large I/O
+
+🔁 Try-with-Resources
+Ensures automatic closing of file streams:
+
+java
+Copy
+Edit
+try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+    System.out.println(br.readLine());
+}
+🆕 Java NIO File Handling
+Uses Path, Files, Paths
+
+More flexible and faster (suitable for large file operations)
+
+java
+Copy
+Edit
+Path path = Paths.get("sample.txt");
+Files.writeString(path, "Hello NIO");
+String content = Files.readString(path);
+🧠 Key Interview Points
+Concept	Notes
+File class	Used to represent file/directory; doesn’t handle content
+IOException	Must be handled or declared
+BufferedReader vs Scanner	BufferedReader is faster
+Try-with-resources	Recommended way to close file streams automatically
+NIO vs IO	NIO is non-blocking and supports channels and buffers
+Append Mode	Enabled by setting second argument to true in FileWriter
+
+⚠️ Exception Handling
+Most file operations throw IOException
+
+Use try-catch or throws keyword to handle:
+
+java
+Copy
+Edit
+try {
+   // file operations
+} catch (IOException e) {
+   e.printStackTrace();
+}
+✅ Summary:
+Java provides powerful tools for file handling.
+
+Use java.io for basic operations and java.nio.file for modern, scalable needs.
+
+Always close resources or use try-with-resources.
+
+Understand byte vs character streams, and when to use buffered streams.
